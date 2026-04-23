@@ -21,4 +21,3 @@ Estrutura da Pasta do Projeto
 * data: Pasta destinada ao armazenamento da base de dados SQLite (g62_database.db).
 * diagrama: Diagrama de Classes UML que representa o modelo de dados e as relações entre as entidades (incluindo a relação Muitos-para-Muitos).
 * README: Este ficheiro de documentação e introdução ao projeto.
-
