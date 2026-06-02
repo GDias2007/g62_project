@@ -1,7 +1,3 @@
-"""
-@author: Pessoa 1 - Benedita Lima (up202504086)
-Gráfico 1: Número de transações por tipo de cartão
-"""
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
