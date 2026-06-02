@@ -4,4 +4,11 @@ Created on Mon May 25 15:15:37 2026
 
 @author: teres
 """
+# Ignorar pastas de cache recursivamente
+__pycache__/
+**/__pycache__/
 
+# Ignorar ficheiros compilados .pyc em qualquer lugar
+*.pyc
+*.pyo
+*.pyd
