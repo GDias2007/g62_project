@@ -92,6 +92,13 @@ http://127.0.0.1:5000
 ```
 
 ---
+## Análise de Dados
+O sistema inclui uma página de análise acessível pelo menu após login.
+São apresentadas estatísticas gerais das transações e 4 gráficos:
+- Número de transações por tipo de cartão
+- Volume total por tipo de cartão
+- Valor médio por tipo de cartão
+- Distribuição dos montantes das transações
 
 ## Repositório GitHub
 [https://github.com/GDias2007/g62_project]
