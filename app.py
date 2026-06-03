@@ -51,5 +51,14 @@ def gform(cname):
 def userlogin():
     return apps_userlogin()
 
+@app.route("/analytics")
+def analytics():
+    from analytics import gerar_graficos
+    ulogin = session.get("user")
+    if ulogin is None:
+        return render_template("index.html", ulogin=ulogin)
+    estatisticas = gerar_graficos()
+    return render_template("analytics.html", ulogin=ulogin, estatisticas=estatisticas)
+
 if __name__ == '__main__':
     app.run(debug=True)

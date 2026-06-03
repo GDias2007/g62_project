@@ -6,19 +6,16 @@
 
 {% block content %}
 <div class="dados">
-    <h1>Análise de Dados</h1>
+    <h1>Analytics</h1>
     <br>
 
     <table>
-        <tr>
-            <th>Indicador</th>
-            <th>Valor</th>
-        </tr>
+        <tr><th>Indicador</th><th>Valor</th></tr>
         <tr><td>Total de Transações</td><td>{{ estatisticas.total_transacoes }}</td></tr>
-        <tr><td>Volume Total</td><td>€ {{ "%.2f"|format(estatisticas.volume_total) }}</td></tr>
-        <tr><td>Valor Médio por Transação</td><td>€ {{ "%.2f"|format(estatisticas.valor_medio) }}</td></tr>
-        <tr><td>Valor Máximo</td><td>€ {{ "%.2f"|format(estatisticas.valor_maximo) }}</td></tr>
-        <tr><td>Valor Mínimo</td><td>€ {{ "%.2f"|format(estatisticas.valor_minimo) }}</td></tr>
+        <tr><td>Volume Total (€)</td><td>{{ "%.2f"|format(estatisticas.volume_total) }}</td></tr>
+        <tr><td>Valor Médio (€)</td><td>{{ "%.2f"|format(estatisticas.valor_medio) }}</td></tr>
+        <tr><td>Valor Máximo (€)</td><td>{{ "%.2f"|format(estatisticas.valor_maximo) }}</td></tr>
+        <tr><td>Valor Mínimo (€)</td><td>{{ "%.2f"|format(estatisticas.valor_minimo) }}</td></tr>
         <tr><td>Total de Bancos</td><td>{{ estatisticas.total_bancos }}</td></tr>
         <tr><td>Total de Agências</td><td>{{ estatisticas.total_agencias }}</td></tr>
         <tr><td>Total de Cartões</td><td>{{ estatisticas.total_cartoes }}</td></tr>
@@ -28,22 +25,27 @@
     <h2>Gráficos</h2>
     <br>
 
-    <h3>Número de Transações por Tipo de Cartão</h3>
-    <img src="{{ url_for('static', filename='graficos/grafico1.png') }}" width="700">
-    <br><br>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+        <div>
+            <h3>Nº de Transações por Tipo de Cartão</h3>
+            <img src="{{ url_for('static', filename='graficos/grafico1.png') }}" width="600"/>
+        </div>
+        <div>
+            <h3>Volume Total por Tipo de Cartão</h3>
+            <img src="{{ url_for('static', filename='graficos/grafico2.png') }}" width="500"/>
+        </div>
+        <div>
+            <h3>Valor Médio por Tipo de Cartão</h3>
+            <img src="{{ url_for('static', filename='graficos/grafico3.png') }}" width="600"/>
+        </div>
+        <div>
+            <h3>Distribuição dos Montantes</h3>
+            <img src="{{ url_for('static', filename='graficos/grafico4.png') }}" width="600"/>
+        </div>
+    </div>
 
-    <h3>Volume Total por Tipo de Cartão</h3>
-    <img src="{{ url_for('static', filename='graficos/grafico2.png') }}" width="600">
+    <br>
+    <a class="button1" href="/">Voltar</a>
     <br><br>
-
-    <h3>Valor Médio por Tipo de Cartão</h3>
-    <img src="{{ url_for('static', filename='graficos/grafico3.png') }}" width="700">
-    <br><br>
-
-    <h3>Distribuição dos Montantes das Transações</h3>
-    <img src="{{ url_for('static', filename='graficos/grafico4.png') }}" width="700">
-    <br><br>
-
-    <button type="button" onclick="window.location.href='/'" class="button1">Sair</button>
 </div>
 {% endblock %}
