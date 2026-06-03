@@ -77,7 +77,7 @@ class Gclass:
     def remove(cls, p):
         obj = cls.obj[p]
         id = cls.att[0][1:]
-        command = f'DELETE FROM {cls.__name__} WHERE {id}={cls.conv(obj,id,p)}'
+        command = f'DELETE FROM "{cls.__name__}" WHERE {id}={cls.conv(obj,id,p)}'
         cls.sqlexe(command)
         cls.lst.remove(p)
         del cls.obj[p]
@@ -85,7 +85,7 @@ class Gclass:
     @classmethod
     def insert(cls, p):
         obj = cls.obj[p]
-        command = f'INSERT INTO {cls.__name__} VALUES('
+        command = f'INSERT INTO "{cls.__name__}" VALUES('
         for att in cls.att:
             value = getattr(obj, att)
             command += f'{cls.conv(obj, att, value)},'
@@ -96,11 +96,11 @@ class Gclass:
     def update(cls, p):
         obj = cls.obj[p]
         command = f'UPDATE "{cls.__name__}" SET'
-        for att in cls.att[1:]:
+        for att in cls.att:
             value = getattr(obj, att)
             command += f' {att[1:]} = {cls.conv(obj, att, value)},'
-        id = cls.att[0][1:]
-        command = command[:-1] + f' WHERE {id} = {cls.conv(obj, id, p)}'
+            id = cls.att[0][1:]
+            command = command[:-1] + f' WHERE {id} = {cls.conv(obj, id, p)}'
         cls.sqlexe(command)
     @staticmethod
     def conv(obj, att, value):
@@ -155,7 +155,7 @@ class Gclass:
         try:
             fh = open(path, 'r')
             fh.close()
-            lista = cls.sqlexe("select * from " + cls.__name__)
+            lista = cls.sqlexe('select * from "' + cls.__name__ + '"')
             if lista != None:
                 for r in lista:
                     objstr = f'{r[0]}'
@@ -183,7 +183,7 @@ class Gclass:
             cur = con.cursor()
             con.row_factory = sqlite3.Row
             tname = cls.__name__
-            cur = con.execute(f"SELECT name FROM sqlite_master WHERE type='table' AND name='{tname}'")
+            cur = con.execute(f"SELECT name FROM sqlite_master WHERE type='table' AND name='{tname}' COLLATE NOCASE")
             table = cur.fetchone()
             if table is None or table[0] != tname:
                 print(f"ERROR: table {tname} missing in database {cls.path}")

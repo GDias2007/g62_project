@@ -8,6 +8,13 @@ from classes.userlogin import Userlogin
 
 prev_option = ""
 
+def obj_to_dict(obj, att):
+    """Converte um objeto Python num dicionário para o template."""
+    d = {}
+    for a in att:
+        d[a] = getattr(obj, a)
+    return d
+
 def apps_gform(cname=''):
     global prev_option
     ulogin = session.get("user")
@@ -55,12 +62,13 @@ def apps_gform(cname=''):
         prev_option = option
         obj = cl.current()
         if option == 'insert' or len(cl.lst) == 0:
-            obj = dict()
-            obj[cl.att[0]] = 0
+            obj_dict = {cl.att[0]: 0}
             for i in range(1, len(cl.att)):
-                obj[cl.att[i]] = ""
+                obj_dict[cl.att[i]] = ""
+        else:
+            obj_dict = obj_to_dict(obj, cl.att)
         return render_template("gform.html", butshow=butshow, butedit=butedit,
-                               cname=cname, obj=obj, att=cl.att, des=cl.des,
+                               cname=cname, obj=obj_dict, att=cl.att, des=cl.des,
                                ulogin=session.get("user"))
     else:
         return render_template("index.html", ulogin=ulogin)

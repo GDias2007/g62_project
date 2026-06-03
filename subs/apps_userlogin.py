@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, request, session
 from classes.userlogin import Userlogin
 
@@ -29,7 +28,7 @@ def apps_userlogin():
         elif option == 'cancel':
             pass
         elif prev_option == 'insert' and option == 'save':
-            obj = Userlogin(0,request.form["user"],request.form["usergroup"], \
+            obj = Userlogin(0, request.form["user"], request.form["usergroup"],
                             Userlogin.set_password(request.form["password"]))
             Userlogin.insert(obj.id)
             Userlogin.last()
@@ -53,15 +52,17 @@ def apps_userlogin():
         prev_option = option
         obj = Userlogin.current()
         if option == 'insert' or len(Userlogin.lst) == 0:
+            uid = 0
             user = ""
             usergroup = ""
             password = ""
         else:
+            uid = obj.id
             user = obj.user
             usergroup = obj.usergroup
             password = ""
-        return render_template("userlogin.html", butshow=butshow, butedit=butedit, user=user,usergroup = usergroup,password=password, ulogin=session.get("user"), group=group)
+        return render_template("userlogin.html", butshow=butshow, butedit=butedit,
+                               id=uid, user=user, usergroup=usergroup, password=password,
+                               ulogin=session.get("user"), group=group)
     else:
         return render_template("index.html", ulogin=ulogin)
-# -*- coding: utf-8 -*-
-
