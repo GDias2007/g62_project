@@ -1,7 +1,3 @@
-"""
-@author: António Brito / Carlos Bragança
-(2025) #objective: class Userlogin
-"""""
 import bcrypt
 from classes.gclass import Gclass
 
@@ -17,7 +13,7 @@ class Userlogin(Gclass):
     user_id = 0
     def __init__(self, id, user, usergroup, password):
         super().__init__()
-        # Object attributes
+
         id = Userlogin.get_id(id)
         self._id = id
         self._user = user
