@@ -15,6 +15,21 @@
     <button id="cancel" type="button" {{ butedit }} onclick="window.location.href = '/gform/{{ cname }}?option=cancel'" class="button1">Cancelar</button>
     <button id="exit" type="button" {{ butshow }} onclick="window.location.href = '/gform/{{ cname }}?option=exit'" class="button1">Sair</button>
     <br><br>
+
+    <form method="get" action="/gform/{{ cname }}" style="display:inline;">
+        <input type="hidden" name="option" value="search"/>
+        <label for="search_id"><strong>Pesquisar por ID:</strong></label>
+        <input type="number" id="search_id" name="search_id" value="{{ search_id }}" size="6" placeholder="ex: 5"/>
+        <button type="submit" class="button1">🔍 Ir</button>
+        {% if search_id %}
+        <a href="/gform/{{ cname }}" class="button1">✕ Limpar</a>
+        {% endif %}
+        {% if search_msg %}
+        <span style="color:red; margin-left:10px;">{{ search_msg }}</span>
+        {% endif %}
+    </form>
+
+    <br><br>
     <form id="form" action="/gform/{{ cname }}?option=save" method="post">
         {% for key in att %}
             {% if loop.index == 1 %}
