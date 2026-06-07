@@ -1,7 +1,3 @@
-"""
-@author: Grupo 62 (2025)
-#objective: class Bank
-"""
 from classes.gclass import Gclass
 
 class Bank(Gclass):
