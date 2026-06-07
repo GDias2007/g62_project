@@ -1,27 +1,25 @@
 # G62 - Sistema de Gestão Bancária
 
 ## Introdução
-Este projeto foi desenvolvido no âmbito da Unidade Curricular de **Programação de Computadores II**.
+Este projeto foi desenvolvido no âmbito da Unidade Curricular de Programação de Computadores II.
 
 O objetivo é a criação de um sistema de gestão de dados bancários, integrando conceitos de Programação Orientada a Objetos em Python com persistência de dados em SQLite e uma interface web desenvolvida com Flask.
 
 O sistema permite gerir bancos, agências, cartões, clientes e transações financeiras, processando dados a partir de fontes externas (CSV) e expondo-os através de uma aplicação web com autenticação de utilizadores.
 
----
+
 
 ## Elementos do Grupo
-| Nome | Número de Aluno |
-|---|---|
 | Benedita Lima | up202504086 |
+| Francisca Pinho | up202506272 |
 | Gonçalo Dias | up202506658 |
 | Maria Teresa Teixeira | up202504649 |
 | Teresa Carvalho | up202504860 |
-| Francisca Pinho | up202506272 |
 
----
+
 
 ## Estrutura do Projeto
-```
+
 g62_project/
 ├── classes/
 │   ├── gclass.py        # Classe genérica base
@@ -49,9 +47,9 @@ g62_project/
 ├── app.py               # Ficheiro principal Flask
 ├── datafile.py          # Configuração do caminho da base de dados
 └── README.md            # Este ficheiro
-```
 
----
+
+
 
 ## Modelo de Dados
 
@@ -63,7 +61,7 @@ O sistema é composto por 5 entidades principais:
 - **Customer** — cliente (id, nome, NIF, email, banco)
 - **Transaction** — transação financeira (id, data, montante, cartão)
 
----
+
 
 ## Tecnologias Utilizadas
 - **Python 3**
@@ -72,26 +70,26 @@ O sistema é composto por 5 entidades principais:
 - **Pandas** — importação e processamento de dados CSV
 - **HTML / CSS** — interface web
 
----
+
 
 ## Como Instalar e Correr
 
 **1. Instalar as dependências:**
 ```bash
 pip install flask bcrypt
-```
+
 
 **2. Correr a aplicação:**
 ```bash
 python app.py
-```
+
 
 **3. Abrir no browser:**
-```
-http://127.0.0.1:5000
-```
 
----
+http://127.0.0.1:5000
+
+
+
 ## Análise de Dados
 O sistema inclui uma página de análise acessível pelo menu após login.
 São apresentadas estatísticas gerais das transações e 4 gráficos:
